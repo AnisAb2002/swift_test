@@ -20,7 +20,7 @@ var couleur = ["rouge", "noir", "blanc", "gris", "rose"]  //Créer un tableau de
 
 couleur[3] = "violet"  //Changer le quatrième élément du tableau en "violet".
 
-print(couleur[0], ", ", couleur.last ?? "")  //Imprimer le premier et le dernier élément du tableau.
+print(couleur[0], ", ", couleur.last ?? " aucun element ")  //Imprimer le premier et le dernier élément du tableau.
 
 //Bonus : Utiliser le liage optionnel pour déballer en toute sécurité et imprimer le
 if !couleur[4].isEmpty {
@@ -30,13 +30,13 @@ if !couleur[4].isEmpty {
 //3)Création de Tuples
 print("\n3)Création de Tuples")
 
-let xy = (x: 88, y: 77)   //Créer un tuple représentant une coordonnée avec une valeur x et y.
+let xy = (x: 88, y: 77)  //Créer un tuple représentant une coordonnée avec une valeur x et y.
 
 let xyz = (x: 88, y: 78, z: 11)  //Créer un autre tuple représentant un point 3D avec des valeurs x, y, et z.
 
 //Imprimer les valeurs des deux tuples.
-print("x et y : ",xy)
-print("x et y et z : ",xyz)
+print("x et y : ", xy)
+print("x et y et z : ", xyz)
 
 //  4. Décomposition de Tuples
 print("\n4 Décomposition de Tuples")
@@ -45,9 +45,50 @@ print("\n4 Décomposition de Tuples")
 //intitulé de poste)
 let pers = (nom: "Anis", age: 23, poste: "etudiant")
 //Imprimer chaque élément en accédant directement via le tuple.
-print("nom : ",pers.nom," age : ", pers.age," poste : ",pers.poste)
+print("nom : ", pers.nom, " age : ", pers.age, " poste : ", pers.poste)
 
 //Décomposer le tuple en variables individuelles, puis imprimer-les.
 let (nom, age, poste) = pers
 
-print("nom : ",nom," age : ", age," poste : ",poste)
+print("nom : ", nom, " age : ", age, " poste : ", poste)
+
+//5. Bases des Dictionnaires
+print("\n 5. Bases des Dictionnaire")
+//Créer un dictionnaire qui associe des noms (String) à des âges (Int).
+var dict = [String: Int]()
+dict["Anis"] = 23
+dict["Cristiano"] = 40  //Ajouter ainsi que deux autres entrées dans le dictionnaire.
+
+//Mettre à jour l'âge de l'une des entrées.
+dict.updateValue(41, forKey: "Cristiano")
+
+if let removedValue = dict.removeValue(forKey: "Anis") {
+    print("\(removedValue) was removed.")
+}  //Retirer une entrée du dictionnaire.
+
+//Parcourer le dictionnaire et imprimer chaque paire clé-valeur.
+for (nom, age) in dict {
+    print("nom : \(nom), age : \(age)")
+}
+
+//6. Dictionnaires Avancés
+print("\n 6. Dictionnaires Avancés")
+
+//Créer un dictionnaire représentant une voiture, où les clés sont des propriétés (comme
+//"couleur", "marque", "année") et les valeurs sont les détails respectifs.
+let voiture: [String: String] = [
+    "marque": "BMW",
+    "couleur": "Noir",
+    "année": "2026",
+]
+
+print(voiture["marque"] ?? "aucun")  //Accéder et imprimer la valeur de "marque".
+
+//Déballer en toute sécurité et imprimer la valeur de "modèle" en utilisant le liage optionnel
+//(la clé "modèle" peut ou non exister).
+if let modele = voiture["modèle"] {
+    print("Modèle :", modele)
+} else {
+    print("le modele est inconnu")
+}
+
