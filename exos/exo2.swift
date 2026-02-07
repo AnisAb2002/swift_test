@@ -92,3 +92,76 @@ if let modele = voiture["modèle"] {
     print("le modele est inconnu")
 }
 
+//7. Tri des Tableaux
+print("7. Tri des Tableaux ")
+//Créer un tableau d'entiers.
+tab = [2, 5, 3]
+//Trier le tableau en ordre croissant et imprimer le résultat.
+var croi = tab.sorted()
+print("croissant : ", croi)
+//Trier le tableau en ordre décroissant et imprimer le résultat.
+var decroi = tab.sorted(by: >)
+print("decroissant : ", decroi)
+
+//  8 Structures Mixtes
+print("\n 8. Structures Mixtes")
+
+//Créer un tableau de dictionnaires, chaque dictionnaire représentant un livre avec des
+//clés pour le titre, l'auteur, et l'année de publication.
+var livres = [[String: String]]()
+
+//Ajouter trois livres au tableau.
+livres.append(["titre": "1984", "auteur": "George Orwell", "année": "1949"])
+livres.append(["titre": "Dracula", "auteur": "Bram Stoker", "année": "1897"])
+livres.append(["titre": "L'Étranger", "auteur": "Albert Camus", "année": "1942"])
+
+//Imprimer le titre et l'auteur de chaque livre en utilisant une boucle.
+for l in livres {
+    if let t = l["titre"], let a = l["auteur"] {
+        print("titre : \(t), écrit par : \(a)")
+    }
+}
+
+//9. Dictionnaires Complexes
+print("\n9. Dictionnaires Complexes")
+
+// Créer un dictionnaire où les clés sont des genres (par exemple, "fiction", "non-fiction") et
+//les valeurs sont des tableaux de titres de livres dans ce genre.
+var livresFiction = [String: [String]]()
+
+livresFiction["fiction"] = ["1984", "Dracula", "Frankenstein"]
+livresFiction["non-fiction"] = ["L'Etranger", "Central Park", "Le Rebelle"]
+//Ajouter au moins deux genres, chacun avec trois titres de livres.
+
+//Parcourer le dictionnaire et imprimer chaque genre ainsi que les titres qu'il contient.
+for (f, lv) in livresFiction {
+    print("genre :", f)
+    for l in lv {
+        print(" ... \(l)")
+    }
+}
+
+//10. Filtrage des Dictionnaires
+print("\n 10. Filtrage des Dictionnaires")
+
+// Créer un dictionnaire qui associe des noms de produits à leurs prix.
+var produits = [String: Float]()
+produits = [
+    "Lait": 3,
+    "Café": 2.5,
+    "Legumes": 5,
+]
+//Écriver une fonction qui prend le dictionnaire et une limite de prix, et retourne un
+//dictionnaire avec uniquement les produits qui sont en dessous de la limite de prix.
+func limiteProduits(liste: [String: Float], limite: Float) -> [String: Float] {
+    var nvListe: [String: Float] = [:]
+    for (prd, prix) in liste {
+        if prix < limite {
+            nvListe[prd] = prix
+        }
+    }
+    return nvListe
+}
+//Tester la fonction avec un dictionnaire de votre choix et une limite de prix raisonnable.
+let listeLimite = limiteProduits(liste : produits, limite :4.5)
+print(listeLimite)
